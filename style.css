@@ -26,15 +26,15 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
     background: var(--cream);
     color: var(--text-dark);
-    line-height: 1.7;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Georgia', serif;
     font-weight: 700;
     color: var(--text-dark);
 }
@@ -42,11 +42,11 @@ h1, h2, h3, h4 {
 .container {
     width: min(90%, 1200px);
     margin-inline: auto;
-    padding-block: 2rem;
+    padding-block: 1.5rem;
 }
 
 .section {
-    padding-block: 5rem 4rem;
+    padding-block: 3rem 2rem;
 }
 
 .btn {
@@ -193,8 +193,8 @@ h1, h2, h3, h4 {
 }
 
 .hero {
-    margin-top: 6rem;
-    min-height: 100vh;
+    margin-top: 4rem;
+    min-height: 85vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -256,9 +256,9 @@ h1, h2, h3, h4 {
     text-align: center;
     max-width: 700px;
     margin: 0 auto;
-    padding: 2.5rem;
+    padding: 2rem;
     background: rgba(255, 255, 255, 0.92);
-    border-radius: 24px;
+    border-radius: 20px;
     box-shadow: var(--shadow);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.6);
@@ -554,7 +554,7 @@ h1, h2, h3, h4 {
 }
 
 .gallery-item {
-    height: 250px;
+    height: 180px;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -818,14 +818,14 @@ h1, h2, h3, h4 {
 
 .section-title {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .section-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--text-medium);
     max-width: 700px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2rem;
 }
 
 .image-placeholder {
