@@ -46,7 +46,7 @@ h1, h2, h3, h4 {
 }
 
 .section {
-    padding-block: 3rem 2rem;
+    padding-block: 2rem 1.5rem;
 }
 
 .btn {
@@ -193,8 +193,8 @@ h1, h2, h3, h4 {
 }
 
 .hero {
-    margin-top: 4rem;
-    min-height: 85vh;
+    margin-top: 3rem;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     position: relative;
