@@ -6,24 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
-            const isActive = i === index;
-            slide.classList.toggle('active', isActive);
-            const content = slide.querySelector('.slide-content');
-            if (content) {
-                if (isActive) {
-                    content.style.opacity = '0';
-                    content.style.transform = 'translateY(30px) scale(0.95)';
-                    content.style.transition = 'none';
-                    void(content.offsetWidth);
-                    content.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 400ms, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 400ms';
-                    content.style.opacity = '1';
-                    content.style.transform = 'translateY(0) scale(1)';
-                } else {
-                    content.style.opacity = '0';
-                    content.style.transform = 'translateY(30px) scale(0.95)';
-                    content.style.transition = 'none';
-                }
-            }
+            slide.classList.toggle('active', i === index);
+        });
+        const allContents = document.querySelectorAll('.hero-content .slide-content');
+        allContents.forEach((content, i) => {
+            content.classList.toggle('active', i === index);
         });
         if (dots.length > 0) {
             dots.forEach((dot, i) => {
