@@ -115,10 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        heroContent.classList.add('fade-in-up');
-    }
+
 
     const testimonial = document.querySelector('.testimonial');
     if (testimonial) {
