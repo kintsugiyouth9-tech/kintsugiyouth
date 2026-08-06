@@ -194,86 +194,31 @@ h1, h2, h3, h4 {
 
 .hero {
     margin-top: 0.5rem;
-    min-height: 30vh;
-    display: block;
+    min-height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    overflow: visible;
-}
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    width: 100%;
-    max-width: 550px;
-    text-align: center;
-}
-
-.hero-content .slide-content {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    padding: 0.5rem;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-    pointer-events: none;
-}
-
-.hero-content .slide-content.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 221, 209, 0.25), rgba(255, 201, 113, 0.15));
-    z-index: 1;
-}
-
-.slideshow-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    background: linear-gradient(135deg, var(--light-peach), var(--peach));
     overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 221, 209, 0.3), rgba(255, 201, 113, 0.2));
     z-index: 0;
 }
 
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-    transform: scale(1.05);
-}
-
-.slide.active {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.slide::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 221, 208, 0.2));
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    text-align: center;
+    padding: 2rem 1.5rem;
 }
 
 
@@ -466,30 +411,6 @@ h1, h2, h3, h4 {
     color: var(--text-dark);
     position: relative;
     z-index: 1;
-}
-
-.pagination {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    display: flex;
-    gap: 0.5rem;
-}
-
-.pagination-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--light-peach);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.pagination-dot.active,
-.pagination-dot:hover {
-    background: var(--golden);
 }
 
 .donate-grid {
