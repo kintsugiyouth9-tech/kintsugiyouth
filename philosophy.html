@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/jpeg" href="logo.jpg">
-<title>Philosophy — Kintsugi Art</title>
+<title>Philosophy — Kintsugi Youth</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -279,14 +279,54 @@
     .partner-grid{grid-template-columns:1fr;}
   }
 
+
+  .phi-img-wrap {
+    position: relative;
+    width: 62%;
+    border-radius: 50%;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+  }
+  .phi-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .phi-cracks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .phi-cracks .crack-line {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawCrack 1.5s ease forwards;
+  }
+  .phi-cracks .crack-line.c2 { animation-delay: 0.4s; }
+  .phi-cracks .crack-line.c3 { animation-delay: 0.8s; }
+  .phi-cracks .crack-glow {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawCrack 1.5s ease forwards;
+  }
+  .phi-cracks .crack-glow.c2 { animation-delay: 0.4s; }
+  .phi-cracks .crack-glow.c3 { animation-delay: 0.8s; }
+  @keyframes drawCrack {
+    to { stroke-dashoffset: 0; }
+  }
+
 </style>
 </head>
 <body>
 <header>
   <div class="nav">
     <a href="index.html" class="logo">
-      <img src="logo.jpg" alt="Kintsugi Art" class="mark" style="width:30px;height:30px;object-fit:cover;border-radius:6px;">
-      <span>Kintsugi Art</span>
+      <img src="logo.jpg" alt="Kintsugi Youth" class="mark" style="width:30px;height:30px;object-fit:cover;border-radius:6px;">
+      <span>Kintsugi Youth</span>
     </a>
     <nav class="links">
       <a href="index.html" class="">Home</a>
@@ -371,8 +411,8 @@
 </main>
 <footer>
   <div class="logo">
-    <img src="logo.jpg" alt="Kintsugi Art" class="mark" style="width:30px;height:30px;object-fit:cover;border-radius:6px;">
-    <span>Kintsugi Art</span>
+    <img src="logo.jpg" alt="Kintsugi Youth" class="mark" style="width:30px;height:30px;object-fit:cover;border-radius:6px;">
+    <span>Kintsugi Youth</span>
   </div>
   <p>A youth organisation joining communities together, one gold seam at a time.</p>
   <div class="footer-links">
@@ -382,7 +422,7 @@
     <a href="partners.html">Partners</a>
     <a href="join.html">Get Involved</a>
   </div>
-  <div class="footer-bottom">© 2026 Kintsugi Art Youth Collective. Started June 2026 — mended with gold ever since.</div>
+  <div class="footer-bottom">© 2026 Kintsugi Youth Youth Collective. Started June 2026 — mended with gold ever since.</div>
 </footer>
 <script>
 
