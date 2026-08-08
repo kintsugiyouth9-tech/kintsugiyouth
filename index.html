@@ -1,242 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kintsugi Youth | Where Healing Becomes Art</title>
-    <link rel="icon" href="logo.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="style.css?v=13">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kintsugi Art — Youth for Repair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --cream:#FFF8F2;
+    --white:#FFFFFF;
+    --pink:#F6D3DD;
+    --pink-deep:#E8A9BC;
+    --peach:#F5C79C;
+    --peach-deep:#EFAE79;
+    --gold:#C6972F;
+    --gold-bright:#E0B84B;
+    --ink:#4A362F;
+    --ink-soft:#7A6155;
+    --shadow: 0 20px 50px -20px rgba(150, 100, 60, 0.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -5%, rgba(246,211,221,0.55), transparent 60%),
+      radial-gradient(ellipse 800px 600px at -5% 20%, rgba(245,199,156,0.4), transparent 55%),
+      var(--cream);
+    color:var(--ink);
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+    min-height:100vh;
+    display:flex; flex-direction:column;
+  }
+  main{flex:1;}
+  h1,h2,h3,.display{ font-family:'Shippori Mincho', serif; color:var(--ink); font-weight:700; letter-spacing:0.01em; }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+    outline:2px solid var(--gold); outline-offset:3px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(14px);
+    background: rgba(255,248,242,0.86);
+    border-bottom:1px solid rgba(198,151,47,0.18);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1180px; margin:0 auto; }
+  .logo{ display:flex; align-items:center; gap:10px; font-family:'Shippori Mincho', serif; font-size:1.28rem; font-weight:700; }
+  .logo .mark{width:30px;height:30px;flex-shrink:0;}
+  nav.links{display:flex; gap:34px; align-items:center;}
+  nav.links a{ font-size:0.94rem; color:var(--ink-soft); position:relative; padding:4px 0; transition:color .25s ease; }
+  nav.links a::after{ content:''; position:absolute; left:0; bottom:-2px; width:0; height:1.5px; background:var(--gold); transition:width .3s ease; }
+  nav.links a:hover{color:var(--ink);}
+  nav.links a:hover::after{width:100%;}
+  nav.links a.active{color:var(--ink); font-weight:700;}
+  nav.links a.active::after{width:100%;}
+  .nav-cta{
+    background:linear-gradient(135deg, var(--gold-bright), var(--gold)); color:#fff; padding:10px 22px; border-radius:999px;
+    font-size:0.9rem; font-weight:500; box-shadow:0 8px 20px -8px rgba(198,151,47,0.6);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px); box-shadow:0 12px 26px -8px rgba(198,151,47,0.75);}
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .nav-toggle svg{width:26px;height:26px;}
+
+  .page-hero{ padding:64px 32px 20px; max-width:1180px; margin:0 auto; text-align:center; }
+  .page-hero .kicker{display:block; margin-bottom:14px;}
+  .page-hero h1{ font-size:clamp(2.2rem,4vw,3.1rem); margin-bottom:16px; }
+  .page-hero p{ color:var(--ink-soft); max-width:600px; margin:0 auto; font-size:1.05rem; }
+
+  .hero{ padding:78px 32px 60px; max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:10px; font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:22px; }
+  .eyebrow::before{content:''; width:26px; height:1px; background:var(--gold);}
+  .hero h1{ font-size:clamp(2.5rem, 4.6vw, 3.7rem); line-height:1.15; margin-bottom:22px; }
+  .hero h1 .gold-word{
+    background:linear-gradient(100deg, var(--gold), var(--peach-deep) 60%, var(--gold-bright));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.sub{ font-size:1.08rem; color:var(--ink-soft); max-width:480px; margin-bottom:34px; }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold-bright), var(--gold)); color:#fff; padding:15px 30px; border-radius:999px; font-weight:500;
+    box-shadow:0 12px 26px -10px rgba(198,151,47,0.65); transition:transform .25s ease, box-shadow .25s ease;
+    border:none; cursor:pointer; font-family:inherit; font-size:1rem; display:inline-block;
+  }
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 16px 32px -10px rgba(198,151,47,0.8);}
+  .btn-ghost{
+    padding:15px 28px; border-radius:999px; border:1.5px solid rgba(74,54,47,0.25); color:var(--ink); font-weight:500;
+    transition:border-color .25s ease, background .25s ease; display:inline-block;
+  }
+  .btn-ghost:hover{border-color:var(--gold); background:rgba(198,151,47,0.08);}
+
+  .bowl-stage{position:relative; display:flex; align-items:center; justify-content:center;}
+  .bowl-stage svg{width:100%; max-width:440px; filter:drop-shadow(0 30px 40px rgba(150,100,50,0.25));}
+  .crack-line{
+    fill:none; stroke:url(#goldGrad); stroke-width:3.2; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:600; stroke-dashoffset:600; animation:draw 1.8s cubic-bezier(.65,0,.35,1) forwards;
+  }
+  .crack-line.c2{animation-delay:.35s;} .crack-line.c3{animation-delay:.7s;} .crack-line.c4{animation-delay:1.0s;}
+  .crack-glow{
+    fill:none; stroke:var(--gold-bright); stroke-width:7; opacity:0.25; stroke-linecap:round;
+    stroke-dasharray:600; stroke-dashoffset:600; animation:draw 1.8s cubic-bezier(.65,0,.35,1) forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .float{animation:float 6s ease-in-out infinite;}
+  @keyframes float{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+
+  section{padding:90px 32px;}
+  section.tight{padding:60px 32px;}
+  .section-inner{max-width:1180px; margin:0 auto;}
+  .kicker{ font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:16px; display:block; }
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-head h2{font-size:clamp(1.9rem,3vw,2.5rem); margin-bottom:16px;}
+  .section-head p{color:var(--ink-soft); font-size:1.05rem;}
+
+  .divider{width:100%; max-width:1180px; margin:0 auto; padding:0 32px;}
+  .divider svg{width:100%; height:34px;}
+  .divider path{
+    fill:none; stroke:var(--gold); stroke-width:2; stroke-linecap:round;
+    stroke-dasharray:900; stroke-dashoffset:900; transition:stroke-dashoffset 1.4s cubic-bezier(.65,0,.35,1);
+  }
+  .divider.in-view path{stroke-dashoffset:0;}
+
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+
+  .philosophy{ background:linear-gradient(180deg, transparent, rgba(246,211,221,0.35) 40%, rgba(246,211,221,0.35) 60%, transparent); }
+  .phi-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:center;}
+  .phi-visual{
+    aspect-ratio:1/1; border-radius:50%; background:radial-gradient(circle at 35% 30%, #fff, var(--pink) 70%);
+    display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow); position:relative; max-width:380px;
+  }
+  .phi-visual svg{width:62%;}
+  .phi-text p{color:var(--ink-soft); margin-bottom:18px; font-size:1.03rem;}
+  .phi-text strong{color:var(--ink); font-weight:700;}
+  .word-jp{font-family:'Shippori Mincho', serif; font-size:1.4rem; color:var(--gold); font-weight:700;}
+
+  .drives-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:26px;}
+  .drives-grid.two{grid-template-columns:repeat(2,1fr);}
+  .drive-card{
+    background:var(--white); border-radius:26px; padding:34px 26px; box-shadow:0 14px 34px -18px rgba(150,100,60,0.3);
+    border:1px solid rgba(198,151,47,0.12); position:relative; overflow:hidden; transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .drive-card::before{
+    content:''; position:absolute; top:-40%; right:-40%; width:140%; height:140%;
+    background:conic-gradient(from 200deg, transparent, rgba(212,175,55,0.12), transparent 40%); pointer-events:none;
+  }
+  .drive-card:hover{transform:translateY(-8px); box-shadow:0 22px 44px -18px rgba(150,100,60,0.4);}
+  .drive-icon{
+    width:56px;height:56px; border-radius:16px; margin-bottom:20px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--peach), var(--pink));
+  }
+  .drive-icon svg{width:28px;height:28px;}
+  .drive-card h3{font-size:1.18rem; margin-bottom:10px;}
+  .drive-card p{color:var(--ink-soft); font-size:0.95rem;}
+  .crack-seam{position:absolute; bottom:0; left:0; width:100%; height:5px; background:linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);}
+
+  .impact-block{ background:linear-gradient(135deg, var(--ink) 0%, #5a4238 100%); border-radius:36px; color:var(--cream); padding:70px 50px; }
+  .impact-block .section-head h2, .impact-block .kicker{color:var(--cream);}
+  .impact-block .kicker{color:var(--gold-bright);}
+  .impact-block .section-head p{color:rgba(255,248,242,0.75);}
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:30px; text-align:center;}
+  .stat-num{
+    font-family:'Shippori Mincho', serif; font-size:clamp(2.2rem,3.6vw,3.2rem); font-weight:700;
+    background:linear-gradient(120deg, var(--gold-bright), var(--peach));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .stat-label{font-size:0.88rem; color:rgba(255,248,242,0.7); margin-top:8px;}
+
+  .timeline{ max-width:720px; margin:0 auto; position:relative; padding-left:34px; }
+  .timeline::before{ content:''; position:absolute; left:8px; top:6px; bottom:6px; width:2px; background:linear-gradient(180deg, var(--gold), var(--peach)); }
+  .timeline-item{ position:relative; padding-bottom:38px; }
+  .timeline-item:last-child{padding-bottom:0;}
+  .timeline-item::before{
+    content:''; position:absolute; left:-34px; top:4px; width:16px; height:16px; border-radius:50%;
+    background:var(--white); border:3px solid var(--gold); box-shadow:0 0 0 4px var(--cream);
+  }
+  .timeline-item .t-date{ font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px; }
+  .timeline-item h3{font-size:1.15rem; margin-bottom:6px;}
+  .timeline-item p{color:var(--ink-soft); font-size:0.96rem;}
+
+  .partners-row{ display:flex; flex-wrap:wrap; gap:16px; justify-content:center; }
+  .partner-pill{
+    padding:14px 26px; border-radius:999px; background:var(--white); border:1px solid rgba(198,151,47,0.2);
+    font-weight:500; font-size:0.95rem; box-shadow:0 8px 20px -14px rgba(150,100,60,0.4);
+  }
+  .partner-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+  .partner-card{
+    background:var(--white); border-radius:22px; padding:30px 28px; box-shadow:0 14px 34px -20px rgba(150,100,60,0.3);
+    border:1px solid rgba(198,151,47,0.12);
+  }
+  .partner-card h3{font-size:1.12rem; margin-bottom:8px;}
+  .partner-card p{color:var(--ink-soft); font-size:0.93rem;}
+  .partner-card .tag{
+    display:inline-block; margin-top:14px; font-size:0.76rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--gold); font-weight:700;
+  }
+
+  .cta-band{
+    background:linear-gradient(135deg, var(--pink), var(--peach)); border-radius:36px; padding:56px 50px; text-align:center;
+  }
+  .cta-band h2{margin-bottom:14px;}
+  .cta-band p{color:var(--ink-soft); max-width:480px; margin:0 auto 26px;}
+
+  .join-block{ background:var(--white); border-radius:36px; padding:64px 50px; box-shadow:var(--shadow); position:relative; overflow:hidden; }
+  .join-block::before{
+    content:''; position:absolute; top:-60px; right:-60px; width:260px; height:260px; border-radius:50%;
+    background:radial-gradient(circle, rgba(246,211,221,0.7), transparent 70%);
+  }
+  .join-grid{display:grid; grid-template-columns:1fr 1fr; gap:50px; position:relative; z-index:1;}
+  .join-text p{color:var(--ink-soft); margin-top:16px; margin-bottom:26px;}
+  .join-points{list-style:none;}
+  .join-points li{ display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; font-size:0.96rem; color:var(--ink-soft); }
+  .join-points li::before{
+    content:''; width:8px; height:8px; margin-top:7px; border-radius:2px; background:var(--gold); flex-shrink:0; transform:rotate(45deg);
+  }
+  form{display:flex; flex-direction:column; gap:16px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-size:0.85rem; color:var(--ink-soft); font-weight:500;}
+  .field input, .field select, .field textarea{
+    padding:13px 16px; border-radius:14px; border:1.5px solid rgba(74,54,47,0.18);
+    background:var(--cream); font-family:inherit; font-size:0.96rem; color:var(--ink);
+    transition:border-color .25s ease, background .25s ease;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--gold); background:#fff; outline:none; }
+  textarea{resize:vertical; min-height:80px;}
+  form .btn-primary{align-self:flex-start; margin-top:6px;}
+  .form-note{font-size:0.82rem; color:var(--ink-soft); margin-top:4px;}
+
+  footer{padding:70px 32px 40px; text-align:center;}
+  footer .logo{justify-content:center; margin-bottom:18px;}
+  footer p{color:var(--ink-soft); max-width:420px; margin:0 auto 26px;}
+  .footer-links{display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-bottom:30px;}
+  .footer-links a{color:var(--ink-soft); font-size:0.92rem; transition:color .25s ease;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-bottom{font-size:0.8rem; color:var(--ink-soft); opacity:0.7;}
+
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr; text-align:center;}
+    .hero p.sub{margin-left:auto; margin-right:auto;}
+    .hero-ctas{justify-content:center;}
+    .eyebrow{margin-left:auto;margin-right:auto;}
+    .bowl-stage{order:-1; max-width:340px; margin:0 auto;}
+    .phi-grid{grid-template-columns:1fr;}
+    .phi-visual{margin:0 auto;}
+    .drives-grid{grid-template-columns:repeat(2,1fr);}
+    .stat-grid{grid-template-columns:repeat(2,1fr); row-gap:36px;}
+    .join-grid{grid-template-columns:1fr;}
+    .partner-grid{grid-template-columns:1fr;}
+    nav.links{
+      position:fixed; top:66px; left:0; right:0; background:var(--cream); flex-direction:column;
+      padding:20px 32px; gap:18px; border-bottom:1px solid rgba(198,151,47,0.18);
+      transform:translateY(-130%); transition:transform .3s ease; box-shadow:0 20px 30px -20px rgba(0,0,0,0.15);
+    }
+    nav.links.open{transform:translateY(0);}
+    .nav-toggle{display:block;}
+  }
+  @media (max-width:560px){
+    .nav{padding:14px 20px;}
+    .hero{padding:56px 20px 40px;}
+    section{padding:64px 20px;}
+    .drives-grid{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:1fr 1fr;}
+    .impact-block, .join-block, .cta-band{padding:40px 24px;}
+    .nav-cta{padding:9px 16px; font-size:0.82rem;}
+    .partner-grid{grid-template-columns:1fr;}
+  }
+
+</style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="logo.jpg" alt="Kintsugi Youth Logo" class="logo-img">
-                <div class="logo-text">Kintsugi<span> Youth</span></div>
-            </div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About Kintsugi</a></li>
-                    <li><a href="drives.html">Drives</a></li>
-                    <li><a href="join.html">Get Involved</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo">
+      <svg class="mark" viewBox="0 0 40 40" fill="none">
+        <path d="M8 22c0 8 5.4 13 12 13s12-5 12-13c0-7-5-11-8-16" stroke="#C6972F" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M14 20l5 5 9-11" stroke="#C6972F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Kintsugi Art</span>
+    </a>
+    <nav class="links">
+      <a href="index.html" class="active">Home</a>
+      <a href="philosophy.html" class="">Philosophy</a>
+      <a href="drives.html" class="">Our Drives</a>
+      <a href="impact.html" class="">Impact</a>
+      <a href="partners.html" class="">Partners</a>
+      <a href="join.html" class="nav-cta" style="display:none" id="mobile-cta-spacer"></a>
+    </nav>
+    <a href="join.html" class="nav-cta">Join a Drive</a>
+    <button class="nav-toggle" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#4A362F" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+<main>
 
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1>Where Healing Becomes Art</h1>
-            <p>Kintsugi Youth is a youth-driven initiative creating a safe, understanding, and compassionate space for mental health support — where emotions are not cringe, they are a part of everyday life.</p>
-            <div class="hero-btns">
-                <a href="join.html" class="btn">Join Our Community</a>
-                <a href="about.html" class="btn btn-outline">Our Philosophy</a>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+  <div>
+    <span class="eyebrow">A youth-led repair movement</span>
+    <h1 class="reveal in-view">What breaks<br>can become <span class="gold-word">more beautiful.</span></h1>
+    <p class="sub">Kintsugi Art is a youth collective that runs donation and fundraising drives for grassroots NGOs — mending gaps in our communities the way a kintsugi artisan mends a bowl: openly, carefully, with gold along every seam.</p>
+    <div class="hero-ctas">
+      <a href="join.html" class="btn-primary">Start a Drive With Us</a>
+      <a href="drives.html" class="btn-ghost">See Our Drives</a>
+    </div>
+  </div>
+  <div class="bowl-stage float">
+    <svg viewBox="0 0 400 400" fill="none">
+      <defs>
+        <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#E0B84B"/>
+          <stop offset="1" stop-color="#B57F2A"/>
+        </linearGradient>
+      </defs>
+      <path d="M70 170 C70 250 130 320 200 320 C270 320 330 250 330 170" fill="#F6D3DD" stroke="#E8A9BC" stroke-width="2"/>
+      <ellipse cx="200" cy="170" rx="130" ry="34" fill="#F5C79C" stroke="#EFAE79" stroke-width="2"/>
+      <ellipse cx="200" cy="168" rx="112" ry="24" fill="#FBEADD"/>
+      <path class="crack-glow" d="M120 160 L165 200 L150 260 L185 300"/>
+      <path class="crack-glow c2" d="M200 150 L210 210 L260 240 L250 290"/>
+      <path class="crack-glow c3" d="M260 165 L230 195 L245 250"/>
+      <path class="crack-glow c4" d="M150 260 L110 280"/>
+      <path class="crack-line" d="M120 160 L165 200 L150 260 L185 300"/>
+      <path class="crack-line c2" d="M200 150 L210 210 L260 240 L250 290"/>
+      <path class="crack-line c3" d="M260 165 L230 195 L245 250"/>
+      <path class="crack-line c4" d="M150 260 L110 280"/>
+    </svg>
+  </div>
+</section>
 
-    <section class="section" style="background: var(--white);">
-        <div class="container" style="text-align: center;">
-            <div style="margin-bottom: 2rem;">
-                <span class="text-gold" style="font-size: 4rem;">✦</span>
-            </div>
-            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-dark);">Kintsugi Youth</h2>
-            <p style="color: var(--text-medium); font-size: 1.1rem; max-width: 700px; margin: 0 auto 1rem;">
-                Named after the Japanese art of repairing broken pottery with gold, we help young people find beauty and strength in their imperfections and challenges.
-            </p>
-            <div class="gold-accent"></div>
-            <p style="color: var(--dark-gold); font-weight: 600; margin: 1rem 0;">
-                "At Kintsugi, healing becomes art."
-            </p>
-            <p style="color: var(--text-medium); font-size: 0.95rem; max-width: 600px; margin: 0 auto 1rem;">
-                <span class="text-pink">Free for all youth • From students, for students • No barriers to healing</span>
-            </p>
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">Join</div>
-                    <div class="stat-label">Our growing community</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">Share</div>
-                    <div class="stat-label">Your story</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">Heal</div>
-                    <div class="stat-label">Together</div>
-                </div>
-            </div>
-            <div class="hero-btns">
-                <a href="join.html" class="btn">Join Our Community</a>
-                <a href="drives.html" class="btn btn-outline">Our Programs</a>
-            </div>
-        </div>
-    </section>
+<div class="divider"><svg viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 17 Q 200 2, 340 20 T 700 14 T 1180 18"/></svg></div>
 
-    <section class="section philosophy">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <h2 class="section-title">The Philosophy of Kintsugi</h2>
-                <p class="section-subtitle">Inspired by the ancient Japanese art, we believe that our broken places are where our greatest strength and beauty emerge.</p>
-            </div>
-            <div class="philosophy-inner">
-                <div class="fade-in-up">
-                    <div class="gold-accent"></div>
-                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">What is Kintsugi?</h3>
-                    <p style="margin-bottom: 1.2rem; font-size: 1.1rem; color: var(--text-medium);">
-                        Kintsugi is the centuries-old Japanese art of repairing broken pottery with lacquer mixed with powdered gold. Rather than hiding the damage, the philosophy embraces the flaws as part of the object's history, creating a unique and beautiful piece.
-                    </p>
-                    <p style="font-size: 1.1rem; color: var(--text-medium);">
-                        Kintsugi Youth applies this profound philosophy to the lives of young people. We help them see that their struggles, setbacks, and scars are not flaws to be ashamed of, but rather the very places where their unique strength, beauty, and resilience shine through.
-                    </p>
-                    <div class="quote" style="font-size: 1.4rem; margin: 2rem 0;">
-                        "When we embrace our cracks, we allow the light—and the gold—to enter."
-                    </div>
-                </div>
-                <div class="fade-in-up" style="margin-top: 0.5rem;">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='500' viewBox='0 0 600 500'%3E%3Crect width='600' height='500' fill='%23ffddd1'/%3E%3Cpath d='M300 100 Q400 150 500 100 T550 100' stroke='%23e6a73e' stroke-width='8' fill='none'/%3E%3Cpath d='M550 100 Q450 200 400 300 T400 450' stroke='%23e6a73e' stroke-width='8' fill='none'/%3E%3C/svg%3E" alt="Kintsugi Art" style="width: 100%; border-radius: 20px; box-shadow: var(--shadow);">
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="philosophy tight">
+  <div class="section-inner">
+    <div class="phi-grid">
+      <div class="phi-visual reveal">
+        <svg viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="86" fill="#FBEADD" stroke="#EFAE79" stroke-width="2"/>
+          <path d="M40 90 L85 120 L75 165" stroke="#C6972F" stroke-width="5" stroke-linecap="round"/>
+          <path d="M100 30 L110 95 L155 115 L145 170" stroke="#C6972F" stroke-width="5" stroke-linecap="round"/>
+          <path d="M150 60 L120 100" stroke="#C6972F" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="phi-text reveal">
+        <span class="kicker">The Philosophy</span>
+        <h2 style="margin-bottom:22px;">Kintsugi — <span class="word-jp">金継ぎ</span>, "golden joinery"</h2>
+        <p>In Japan, broken pottery is never hidden or discarded. It's rejoined with lacquer dusted in gold, so the break becomes the most striking part of the piece. <strong>The crack isn't erased — it's honoured.</strong></p>
+        <p>We borrow that idea for our work in communities: every gap we address is a fracture worth repairing openly, with youth volunteers, local NGOs, and everyday donors joined together as a seam of gold.</p>
+        <a href="philosophy.html" class="btn-ghost" style="margin-top:8px;">Read our full philosophy</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="section">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <h2 class="section-title">How We Help</h2>
-                <p class="section-subtitle">Healing-centered support through creative expression and community connection.</p>
-            </div>
-            <div class="features">
-                <div class="card fade-in-up">
-                    <div class="card-header">
-                        <div class="card-icon">🎨</div>
-                        <h3>Creative Healing</h3>
-                    </div>
-                    <p>Art therapy and creative workshops that help youth express emotions, process trauma, and rebuild self-worth in a safe, understanding environment.</p>
-                    <p style="color: var(--text-medium); font-size: 0.9rem; margin-top: 0.5rem;"><strong>Free for all participants • Student-run programs</strong></p>
-                </div>
-                <div class="card fade-in-up" style="margin-top: 0.5rem;">
-                    <div class="card-header">
-                        <div class="card-icon">🤝</div>
-                        <h3>Community Connection</h3>
-                    </div>
-                    <p>Peer support circles and community programs that connect young people with caring individuals who share similar journeys and offer compassionate support.</p>
-                    <p style="color: var(--text-medium); font-size: 0.9rem; margin-top: 0.5rem;"><strong>By students, for students • Always no-cost</strong></p>
-                </div>
-                <div class="card fade-in-up" style="margin-top: 0.75rem;">
-                    <div class="card-header">
-                        <div class="card-icon">📈</div>
-                        <h3>Empowerment</h3>
-                    </div>
-                    <p>Life skills and emotional intelligence workshops that help young people build confidence, communicate authentically, and embrace their authentic selves.</p>
-                    <p style="color: var(--text-medium); font-size: 0.9rem; margin-top: 0.5rem;"><strong>Accessible to all • Youth-led initiatives</strong></p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="divider"><svg viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 20 Q 250 34, 400 16 T 780 22 T 1180 12"/></svg></div>
 
-    <section class="section" style="background: linear-gradient(135deg, var(--light-peach), var(--peach));">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <h2 class="section-title">Stories of Transformation</h2>
-                <p class="section-subtitle">Hear from youth whose lives have been changed through our programs.</p>
-            </div>
-            <div class="testimonials" style="max-width: 800px;">
-                <div class="testimonial">
-                    <p class="testimonial-text">
-                        Before Kintsugi Youth, I thought my emotions made me weird. Through the creative workshops, I learned that feelings aren't cringe—they're part of being human. I'm now peer-facilitating our support circles for other youth.
-                    </p>
-                    <p class="testimonial-author"> — Ananya, Age 19</p>
-                </div>
-            </div>
-    </section>
+<section class="tight">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="kicker">Our Drives</span>
+      <h2>Four ways we mend gaps</h2>
+      <p>Each drive is planned, packed, and delivered by youth volunteers in partnership with vetted NGOs on the ground.</p>
+    </div>
+    <div class="drives-grid">
+      <div class="drive-card reveal">
+        <div class="crack-seam"></div>
+        <div class="drive-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B57F2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6H4a1 1 0 00-1 1v3h18V7a1 1 0 00-1-1z"/><path d="M4 10v9a1 1 0 001 1h14a1 1 0 001-1v-9"/><path d="M12 6V4a2 2 0 114 0v2"/></svg></div>
+        <h3>Clothing Drives</h3>
+        <p>Seasonal collection points across schools and colleges, sorted and delivered to shelters.</p>
+      </div>
+      <div class="drive-card reveal">
+        <div class="crack-seam"></div>
+        <div class="drive-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B57F2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+        <h3>Book &amp; Supply Drives</h3>
+        <p>Textbooks and stationery rerouted from students who've outgrown them to those who need them.</p>
+      </div>
+      <div class="drive-card reveal">
+        <div class="crack-seam"></div>
+        <div class="drive-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B57F2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M6 4l2 3M18 4l-2 3"/><circle cx="12" cy="14" r="8"/><path d="M9 14h6M12 11v6"/></svg></div>
+        <h3>Meal &amp; Ration Packing</h3>
+        <p>Weekend packing drives that turn bulk donations into family-sized ration kits.</p>
+      </div>
+      <div class="drive-card reveal">
+        <div class="crack-seam"></div>
+        <div class="drive-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B57F2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5c1.9 0 3.4 1 5.5 3 2.1-2 3.6-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21z"/></svg></div>
+        <h3>Micro-Fundraisers</h3>
+        <p>Short, transparent campaigns that fund a single, specific need for a partner NGO.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="section">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <h2 class="section-title">From Our Community</h2>
-                <p class="section-subtitle">Moments of healing, creativity, and connection from our youth-led initiatives.</p>
-            </div>
-            <div class="gallery">
-                <div class="gallery-item" style="background: linear-gradient(135deg, var(--light-peach), var(--soft-gold)); background-image: linear-gradient(135deg, var(--light-peach), var(--soft-gold)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48Y2lyY2xlIGN4PSIyNDAiIGN5PSIxMjkiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjEiLz48Y2lyY2xlIGN4PSIzMCIgY3k9IjE2OCIgcj0iMiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMCIvPjxjaXJjbGUgY3g9IjY4IiBjeT0iMzEiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSIzMSIgY3k9Ijc3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjE3Ii8+PGNpcmNsZSBjeD0iMTA0IiBjeT0iMTA5IiByPSI1IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI3Ii8+PGNpcmNsZSBjeD0iNDciIGN5PSIxNTYiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjAiLz48Y2lyY2xlIGN4PSIxNjkiIGN5PSIxNzUiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMTgiLz48Y2lyY2xlIGN4PSI3NiIgY3k9IjY4IiByPSI1IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjE3Ii8+PGNpcmNsZSBjeD0iMTk5IiBjeT0iOTEiIHI9IjIiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjAiLz48Y2lyY2xlIGN4PSIxNjIiIGN5PSI1MiIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yNyIvPjxjaXJjbGUgY3g9IjIxMiIgY3k9IjEzNSIgcj0iNSIgZmlsbD0iI2U2YTczZSIgb3BhY2l0eT0iMC4yNCIvPjxjaXJjbGUgY3g9IjI0MiIgY3k9IjcxIiByPSI1IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iODEiIGN5PSI3MyIgcj0iNSIgZmlsbD0iI2U2YTczZSIgb3BhY2l0eT0iMC4yOSIvPjxjaXJjbGUgY3g9IjEyMCIgY3k9Ijc5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iMTc0IiBjeT0iMTg4IiByPSIzIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iOTgiIGN5PSI3OSIgcj0iNCIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMiIvPjxjaXJjbGUgY3g9Ijk4IiBjeT0iMTIiIHI9IjIiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjYiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjgwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjMwIi8+PGNpcmNsZSBjeD0iMTM0IiBjeT0iOTYiIHI9IjQiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMTciLz48Y2lyY2xlIGN4PSI0NyIgY3k9IjEzNiIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4xOCIvPjxjaXJjbGUgY3g9IjEyOSIgY3k9Ijg4IiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjE2Ii8+PGNpcmNsZSBjeD0iNDkiIGN5PSIxMTYiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSI0NCIgY3k9IjEzIiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iMTAiIGN5PSI2NCIgcj0iNCIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMyIvPjxjaXJjbGUgY3g9Ijk0IiBjeT0iMTE0IiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI0Ii8+PGNpcmNsZSBjeD0iMTQwIiBjeT0iMTI0IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjI3Ii8+PGNpcmNsZSBjeD0iMTM2IiBjeT0iMTQzIiByPSI0IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI2Ii8+PGNpcmNsZSBjeD0iMjEiIGN5PSIxNTAiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjciLz48Y2lyY2xlIGN4PSI5NCIgY3k9IjI5IiByPSI1IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIxIi8+PGNpcmNsZSBjeD0iMTEyIiBjeT0iNTYiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMTkiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjQwIiByPSI4IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjMiLz48Y2lyY2xlIGN4PSI2MCIgY3k9IjQwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI1MyIgY3k9IjUwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjQ2IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjM0IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI1MyIgY3k9IjMwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSIzMCIgcj0iNiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMTU4IiBjeT0iMzAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE1MiIgY3k9IjM3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxNDQiIGN5PSIzNSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMTQ0IiBjeT0iMjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE1MiIgY3k9IjIzIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSI1MCIgcj0iNyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMjU5IiBjeT0iNTAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjI1MyIgY3k9IjU5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyNDMiIGN5PSI1NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjQzIiBjeT0iNDUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjI1MyIgY3k9IjQxIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI4MCIgY3k9IjE3MCIgcj0iNiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iODgiIGN5PSIxNzAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjgyIiBjeT0iMTc3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI3NCIgY3k9IjE3NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iNzQiIGN5PSIxNjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjgyIiBjeT0iMTYzIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjAiIHI9IjciIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMyIvPjxjaXJjbGUgY3g9IjIwOSIgY3k9IjE2MCIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjAzIiBjeT0iMTY5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxOTMiIGN5PSIxNjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE5MyIgY3k9IjE1NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjAzIiBjeT0iMTUxIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMTI2IiBjeT0iODAiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjEyMiIgY3k9Ijg2IiByPSIyIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxMTUiIGN5PSI4NCIgcj0iMiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMTE1IiBjeT0iNzYiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjEyMiIgY3k9Ijc0IiByPSIyIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48cGF0aCBkPSJNMjAgMTgwIFE4MCAxNzAgMTUwIDE4MCBUMjgwIDE4MCIgc3Ryb2tlPSIjZTZhNzNlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuNCIvPjxwYXRoIGQ9Ik0yMCAxMjAgUTYwIDExMCAxNTAgMTIwIFQyODAgMTIwIiBzdHJva2U9IiNlNmE3M2UiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iMC40Ii8+PHBhdGggZD0iTTIwIDYwIFE2MCA1MCAxMjAgNjAgVDIyMCA2MCIgc3Ryb2tlPSIjZTZhNzNlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuNCIvPjwvc3ZnPg=='); background-size: 300px 200px;">
-                    <div style="text-align: center; padding: 2rem; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎨</div>
-                        <h3 style="margin-bottom: 0.5rem;">Healing Circle Workshop</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-medium);">Creative expression meets peer support in our monthly gatherings.</p>
-                    </div>
-                </div>
-                <div class="gallery-item" style="background: linear-gradient(135deg, var(--peach), var(--light-peach)); background-image: linear-gradient(135deg, var(--peach), var(--light-peach)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48Y2lyY2xlIGN4PSIyNDAiIGN5PSIxMjkiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjEiLz48Y2lyY2xlIGN4PSIzMCIgY3k9IjE2OCIgcj0iMiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMCIvPjxjaXJjbGUgY3g9IjY4IiBjeT0iMzEiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSIzMSIgY3k9Ijc3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjE3Ii8+PGNpcmNsZSBjeD0iMTA0IiBjeT0iMTA5IiByPSI1IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI3Ii8+PGNpcmNsZSBjeD0iNDciIGN5PSIxNTYiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjAiLz48Y2lyY2xlIGN4PSIxNjkiIGN5PSIxNzUiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMTgiLz48Y2lyY2xlIGN4PSI3NiIgY3k9IjY4IiByPSI1IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjE3Ii8+PGNpcmNsZSBjeD0iMTk5IiBjeT0iOTEiIHI9IjIiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjAiLz48Y2lyY2xlIGN4PSIxNjIiIGN5PSI1MiIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yNyIvPjxjaXJjbGUgY3g9IjIxMiIgY3k9IjEzNSIgcj0iNSIgZmlsbD0iI2U2YTczZSIgb3BhY2l0eT0iMC4yNCIvPjxjaXJjbGUgY3g9IjI0MiIgY3k9IjcxIiByPSI1IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iODEiIGN5PSI3MyIgcj0iNSIgZmlsbD0iI2U2YTczZSIgb3BhY2l0eT0iMC4yOSIvPjxjaXJjbGUgY3g9IjEyMCIgY3k9Ijc5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iMTc0IiBjeT0iMTg4IiByPSIzIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iOTgiIGN5PSI3OSIgcj0iNCIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMiIvPjxjaXJjbGUgY3g9Ijk4IiBjeT0iMTIiIHI9IjIiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjYiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjgwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjMwIi8+PGNpcmNsZSBjeD0iMTM0IiBjeT0iOTYiIHI9IjQiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMTciLz48Y2lyY2xlIGN4PSI0NyIgY3k9IjEzNiIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4xOCIvPjxjaXJjbGUgY3g9IjEyOSIgY3k9Ijg4IiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjE2Ii8+PGNpcmNsZSBjeD0iNDkiIGN5PSIxMTYiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSI0NCIgY3k9IjEzIiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iMTAiIGN5PSI2NCIgcj0iNCIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMyIvPjxjaXJjbGUgY3g9Ijk0IiBjeT0iMTE0IiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI0Ii8+PGNpcmNsZSBjeD0iMTQwIiBjeT0iMTI0IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjI3Ii8+PGNpcmNsZSBjeD0iMTM2IiBjeT0iMTQzIiByPSI0IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI2Ii8+PGNpcmNsZSBjeD0iMjEiIGN5PSIxNTAiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjciLz48Y2lyY2xlIGN4PSI5NCIgY3k9IjI5IiByPSI1IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIxIi8+PGNpcmNsZSBjeD0iMTEyIiBjeT0iNTYiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMTkiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjQwIiByPSI4IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjMiLz48Y2lyY2xlIGN4PSI2MCIgY3k9IjQwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI1MyIgY3k9IjUwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjQ2IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjM0IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI1MyIgY3k9IjMwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSIzMCIgcj0iNiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMTU4IiBjeT0iMzAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE1MiIgY3k9IjM3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxNDQiIGN5PSIzNSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMTQ0IiBjeT0iMjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE1MiIgY3k9IjIzIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSI1MCIgcj0iNyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMjU5IiBjeT0iNTAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjI1MyIgY3k9IjU5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyNDMiIGN5PSI1NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjQzIiBjeT0iNDUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjI1MyIgY3k9IjQxIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI4MCIgY3k9IjE3MCIgcj0iNiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iODgiIGN5PSIxNzAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjgyIiBjeT0iMTc3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI3NCIgY3k9IjE3NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iNzQiIGN5PSIxNjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjgyIiBjeT0iMTYzIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjAiIHI9IjciIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMyIvPjxjaXJjbGUgY3g9IjIwOSIgY3k9IjE2MCIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjAzIiBjeT0iMTY5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxOTMiIGN5PSIxNjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE5MyIgY3k9IjE1NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjAzIiBjeT0iMTUxIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMTI2IiBjeT0iODAiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjEyMiIgY3k9Ijg2IiByPSIyIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxMTUiIGN5PSI4NCIgcj0iMiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMTE1IiBjeT0iNzYiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjEyMiIgY3k9Ijc0IiByPSIyIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48cGF0aCBkPSJNMjAgMTgwIFE4MCAxNzAgMTUwIDE4MCBUMjgwIDE4MCIgc3Ryb2tlPSIjZTZhNzNlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuNCIvPjxwYXRoIGQ9Ik0yMCAxMjAgUTYwIDExMCAxNTAgMTIwIFQyODAgMTIwIiBzdHJva2U9IiNlNmE3M2UiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iMC40Ii8+PHBhdGggZD0iTTIwIDYwIFE2MCA1MCAxMjAgNjAgVDIyMCA2MCIgc3Ryb2tlPSIjZTZhNzNlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuNCIvPjwvc3ZnPg=='); background-size: 300px 200px;">
-                    <div style="text-align: center; padding: 2rem; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🖌️</div>
-                        <h3 style="margin-bottom: 0.5rem;">Art & Emotion Series</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-medium);">Exploring feelings through color, texture, and self-expression.</p>
-                    </div>
-                </div>
-                <div class="gallery-item" style="background: linear-gradient(135deg, var(--soft-gold), var(--peach)); background-image: linear-gradient(135deg, var(--soft-gold), var(--peach)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48Y2lyY2xlIGN4PSIyNDAiIGN5PSIxMjkiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjEiLz48Y2lyY2xlIGN4PSIzMCIgY3k9IjE2OCIgcj0iMiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMCIvPjxjaXJjbGUgY3g9IjY4IiBjeT0iMzEiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSIzMSIgY3k9Ijc3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjE3Ii8+PGNpcmNsZSBjeD0iMTA0IiBjeT0iMTA5IiByPSI1IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI3Ii8+PGNpcmNsZSBjeD0iNDciIGN5PSIxNTYiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjAiLz48Y2lyY2xlIGN4PSIxNjkiIGN5PSIxNzUiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMTgiLz48Y2lyY2xlIGN4PSI3NiIgY3k9IjY4IiByPSI1IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjE3Ii8+PGNpcmNsZSBjeD0iMTk5IiBjeT0iOTEiIHI9IjIiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjAiLz48Y2lyY2xlIGN4PSIxNjIiIGN5PSI1MiIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yNyIvPjxjaXJjbGUgY3g9IjIxMiIgY3k9IjEzNSIgcj0iNSIgZmlsbD0iI2U2YTczZSIgb3BhY2l0eT0iMC4yNCIvPjxjaXJjbGUgY3g9IjI0MiIgY3k9IjcxIiByPSI1IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iODEiIGN5PSI3MyIgcj0iNSIgZmlsbD0iI2U2YTczZSIgb3BhY2l0eT0iMC4yOSIvPjxjaXJjbGUgY3g9IjEyMCIgY3k9Ijc5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iMTc0IiBjeT0iMTg4IiByPSIzIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iOTgiIGN5PSI3OSIgcj0iNCIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMiIvPjxjaXJjbGUgY3g9Ijk4IiBjeT0iMTIiIHI9IjIiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjYiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjgwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjMwIi8+PGNpcmNsZSBjeD0iMTM0IiBjeT0iOTYiIHI9IjQiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMTciLz48Y2lyY2xlIGN4PSI0NyIgY3k9IjEzNiIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4xOCIvPjxjaXJjbGUgY3g9IjEyOSIgY3k9Ijg4IiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjE2Ii8+PGNpcmNsZSBjeD0iNDkiIGN5PSIxMTYiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSI0NCIgY3k9IjEzIiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iMTAiIGN5PSI2NCIgcj0iNCIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMyIvPjxjaXJjbGUgY3g9Ijk0IiBjeT0iMTE0IiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI0Ii8+PGNpcmNsZSBjeD0iMTQwIiBjeT0iMTI0IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjI3Ii8+PGNpcmNsZSBjeD0iMTM2IiBjeT0iMTQzIiByPSI0IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI2Ii8+PGNpcmNsZSBjeD0iMjEiIGN5PSIxNTAiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjciLz48Y2lyY2xlIGN4PSI5NCIgY3k9IjI5IiByPSI1IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIxIi8+PGNpcmNsZSBjeD0iMTEyIiBjeT0iNTYiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMTkiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjQwIiByPSI4IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjMiLz48Y2lyY2xlIGN4PSI2MCIgY3k9IjQwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI1MyIgY3k9IjUwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjQ2IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjM0IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI1MyIgY3k9IjMwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSIzMCIgcj0iNiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMTU4IiBjeT0iMzAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE1MiIgY3k9IjM3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxNDQiIGN5PSIzNSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMTQ0IiBjeT0iMjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE1MiIgY3k9IjIzIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSI1MCIgcj0iNyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMjU5IiBjeT0iNTAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjI1MyIgY3k9IjU5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyNDMiIGN5PSI1NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjQzIiBjeT0iNDUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjI1MyIgY3k9IjQxIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI4MCIgY3k9IjE3MCIgcj0iNiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iODgiIGN5PSIxNzAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjgyIiBjeT0iMTc3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI3NCIgY3k9IjE3NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iNzQiIGN5PSIxNjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjgyIiBjeT0iMTYzIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjAiIHI9IjciIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMyIvPjxjaXJjbGUgY3g9IjIwOSIgY3k9IjE2MCIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjAzIiBjeT0iMTY5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxOTMiIGN5PSIxNjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE5MyIgY3k9IjE1NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjAzIiBjeT0iMTUxIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMTI2IiBjeT0iODAiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjEyMiIgY3k9Ijg2IiByPSIyIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxMTUiIGN5PSI4NCIgcj0iMiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMTE1IiBjeT0iNzYiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjEyMiIgY3k9Ijc0IiByPSIyIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48cGF0aCBkPSJNMjAgMTgwIFE4MCAxNzAgMTUwIDE4MCBUMjgwIDE4MCIgc3Ryb2tlPSIjZTZhNzNlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuNCIvPjxwYXRoIGQ9Ik0yMCAxMjAgUTYwIDExMCAxNTAgMTIwIFQyODAgMTIwIiBzdHJva2U9IiNlNmE3M2UiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iMC40Ii8+PHBhdGggZD0iTTIwIDYwIFE2MCA1MCAxMjAgNjAgVDIyMCA2MCIgc3Ryb2tlPSIjZTZhNzNlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuNCIvPjwvc3ZnPg=='); background-size: 300px 200px;">
-                    <div style="text-align: center; padding: 2rem; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🤝</div>
-                        <h3 style="margin-bottom: 0.5rem;">Community Moments</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-medium);">Celebrating wins, big and small, together.</p>
-                    </div>
-                </div>
-                <div class="gallery-item" style="background: linear-gradient(135deg, var(--light-peach), var(--peach)); background-image: linear-gradient(135deg, var(--light-peach), var(--peach)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48Y2lyY2xlIGN4PSIyNDAiIGN5PSIxMjkiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjEiLz48Y2lyY2xlIGN4PSIzMCIgY3k9IjE2OCIgcj0iMiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMCIvPjxjaXJjbGUgY3g9IjY4IiBjeT0iMzEiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSIzMSIgY3k9Ijc3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjE3Ii8+PGNpcmNsZSBjeD0iMTA0IiBjeT0iMTA5IiByPSI1IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI3Ii8+PGNpcmNsZSBjeD0iNDciIGN5PSIxNTYiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjAiLz48Y2lyY2xlIGN4PSIxNjkiIGN5PSIxNzUiIHI9IjUiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMTgiLz48Y2lyY2xlIGN4PSI3NiIgY3k9IjY4IiByPSI1IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjE3Ii8+PGNpcmNsZSBjeD0iMTk5IiBjeT0iOTEiIHI9IjIiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjAiLz48Y2lyY2xlIGN4PSIxNjIiIGN5PSI1MiIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yNyIvPjxjaXJjbGUgY3g9IjIxMiIgY3k9IjEzNSIgcj0iNSIgZmlsbD0iI2U2YTczZSIgb3BhY2l0eT0iMC4yNCIvPjxjaXJjbGUgY3g9IjI0MiIgY3k9IjcxIiByPSI1IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iODEiIGN5PSI3MyIgcj0iNSIgZmlsbD0iI2U2YTczZSIgb3BhY2l0eT0iMC4yOSIvPjxjaXJjbGUgY3g9IjEyMCIgY3k9Ijc5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iMTc0IiBjeT0iMTg4IiByPSIzIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iOTgiIGN5PSI3OSIgcj0iNCIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMiIvPjxjaXJjbGUgY3g9Ijk4IiBjeT0iMTIiIHI9IjIiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMjYiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjgwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjMwIi8+PGNpcmNsZSBjeD0iMTM0IiBjeT0iOTYiIHI9IjQiIGZpbGw9IiNlNmE3M2UiIG9wYWNpdHk9IjAuMTciLz48Y2lyY2xlIGN4PSI0NyIgY3k9IjEzNiIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4xOCIvPjxjaXJjbGUgY3g9IjEyOSIgY3k9Ijg4IiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjE2Ii8+PGNpcmNsZSBjeD0iNDkiIGN5PSIxMTYiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSI0NCIgY3k9IjEzIiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIzIi8+PGNpcmNsZSBjeD0iMTAiIGN5PSI2NCIgcj0iNCIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yMyIvPjxjaXJjbGUgY3g9Ijk0IiBjeT0iMTE0IiByPSIyIiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI0Ii8+PGNpcmNsZSBjeD0iMTQwIiBjeT0iMTI0IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjI3Ii8+PGNpcmNsZSBjeD0iMTM2IiBjeT0iMTQzIiByPSI0IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjI2Ii8+PGNpcmNsZSBjeD0iMjEiIGN5PSIxNTAiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMjciLz48Y2lyY2xlIGN4PSI5NCIgY3k9IjI5IiByPSI1IiBmaWxsPSIjZTZhNzNlIiBvcGFjaXR5PSIwLjIxIi8+PGNpcmNsZSBjeD0iMTEyIiBjeT0iNTYiIHI9IjUiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMTkiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjQwIiByPSI4IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjMiLz48Y2lyY2xlIGN4PSI2MCIgY3k9IjQwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI1MyIgY3k9IjUwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjQ2IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjM0IiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI1MyIgY3k9IjMwIiByPSI0IiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSIzMCIgcj0iNiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMTU4IiBjeT0iMzAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE1MiIgY3k9IjM3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxNDQiIGN5PSIzNSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMTQ0IiBjeT0iMjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE1MiIgY3k9IjIzIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSI1MCIgcj0iNyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMjU5IiBjeT0iNTAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjI1MyIgY3k9IjU5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyNDMiIGN5PSI1NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjQzIiBjeT0iNDUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjI1MyIgY3k9IjQxIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI4MCIgY3k9IjE3MCIgcj0iNiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iODgiIGN5PSIxNzAiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjgyIiBjeT0iMTc3IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSI3NCIgY3k9IjE3NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iNzQiIGN5PSIxNjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjgyIiBjeT0iMTYzIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjAiIHI9IjciIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMyIvPjxjaXJjbGUgY3g9IjIwOSIgY3k9IjE2MCIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjAzIiBjeT0iMTY5IiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxOTMiIGN5PSIxNjUiIHI9IjMiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjE5MyIgY3k9IjE1NSIgcj0iMyIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMjAzIiBjeT0iMTUxIiByPSIzIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iNSIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBjeD0iMTI2IiBjeT0iODAiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjEyMiIgY3k9Ijg2IiByPSIyIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48Y2lyY2xlIGN4PSIxMTUiIGN5PSI4NCIgcj0iMiIgZmlsbD0iI2ZmN2E1OCIgb3BhY2l0eT0iMC4yIi8+PGNpcmNsZSBjeD0iMTE1IiBjeT0iNzYiIHI9IjIiIGZpbGw9IiNmZjdhNTgiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9IjEyMiIgY3k9Ijc0IiByPSIyIiBmaWxsPSIjZmY3YTU4IiBvcGFjaXR5PSIwLjIiLz48cGF0aCBkPSJNMjAgMTgwIFE4MCAxNzAgMTUwIDE4MCBUMjgwIDE4MCIgc3Ryb2tlPSIjZTZhNzNlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuNCIvPjxwYXRoIGQ9Ik0yMCAxMjAgUTYwIDExMCAxNTAgMTIwIFQyODAgMTIwIiBzdHJva2U9IiNlNmE3M2UiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iMC40Ii8+PHBhdGggZD0iTTIwIDYwIFE2MCA1MCAxMjAgNjAgVDIyMCA2MCIgc3Ryb2tlPSIjZTZhNzNlIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuNCIvPjwvc3ZnPg=='); background-size: 300px 200px;">
-                    <div style="text-align: center; padding: 2rem; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📱</div>
-                        <h3 style="margin-bottom: 0.5rem;">Instagram Stories</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-medium);">Follow along for daily healing moments @kintsugiyouth</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="divider"><svg viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 14 Q 220 32, 380 18 T 760 10 T 1180 22"/></svg></div>
 
-    <footer class="footer">
-        <div class="container">
-            <div>
-                <div class="logo" style="margin-bottom: 1rem;">
-                    <img src="logo.jpg" alt="Kintsugi Youth Logo" class="logo-img" style="box-shadow: 0 2px 10px rgba(230, 167, 62, 0.3);">
-                    <div class="logo-text" style="color: var(--cream);">Kintsugi<span> Youth</span></div>
-                </div>
-                <p>Where healing becomes art. Your partners in every emotion felt.</p>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/kintsugiyouth" target="_blank" class="social-icon">📷</a>
-                    <a href="mailto:hello@kintsugiyouth.org" class="social-icon">✉</a>
-                </div>
-            </div>
-            <div>
-                <h3>Explore</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Kintsugi</a></li>
-                    <li><a href="drives.html">Programs & Drives</a></li>
-                    <li><a href="join.html">Get Involved</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Programs</h3>
-                <ul class="footer-links">
-                    <li><a href="drives.html">Creative Healing Circles</a></li>
-                    <li><a href="drives.html">Art & Emotion Workshops</a></li>
-                    <li><a href="drives.html">Peer Support Sessions</a></li>
-                    <li><a href="drives.html">Community Drives</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Connect</h3>
-                <ul class="footer-links">
-                    <li><a href="https://www.instagram.com/kintsugiyouth" target="_blank">@kintsugiyouth</a></li>
-                    <li>hello@kintsugiyouth.org</li>
-                    <li>Founded by @its_annikaagg</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Kintsugi Youth. A youth-driven initiative. All rights reserved.</p>
-        </div>
-    </footer>
+<section class="tight">
+  <div class="section-inner impact-block reveal">
+    <div class="section-head" style="margin-bottom:44px;">
+      <span class="kicker">The Repair So Far</span>
+      <h2>Two months in, and the seams are already showing</h2>
+      <p>Kintsugi Art started in June 2026. Here's what our first stretch looks like.</p>
+    </div>
+    <div class="stat-grid">
+      <div><div class="stat-num">2</div><div class="stat-label">Drives completed</div></div>
+      <div><div class="stat-num">4</div><div class="stat-label">Partner NGOs</div></div>
+      <div><div class="stat-num">50+</div><div class="stat-label">Youth volunteers</div></div>
+      <div><div class="stat-num">500+</div><div class="stat-label">Lives touched</div></div>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
+<div class="divider"><svg viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 22 Q 260 4, 420 20 T 800 18 T 1180 14"/></svg></div>
+
+<section class="tight">
+  <div class="section-inner cta-band reveal">
+    <h2>Bring the gold to your city</h2>
+    <p>No experience needed — every drive starts with a short orientation. Two hours or a whole class, there's a seam for you.</p>
+    <a href="join.html" class="btn-primary">Join Kintsugi Art</a>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="logo">
+    <svg class="mark" viewBox="0 0 40 40" fill="none">
+        <path d="M8 22c0 8 5.4 13 12 13s12-5 12-13c0-7-5-11-8-16" stroke="#C6972F" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M14 20l5 5 9-11" stroke="#C6972F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    <span>Kintsugi Art</span>
+  </div>
+  <p>A youth organisation joining communities together, one gold seam at a time.</p>
+  <div class="footer-links">
+    <a href="philosophy.html">Philosophy</a>
+    <a href="drives.html">Our Drives</a>
+    <a href="impact.html">Impact</a>
+    <a href="partners.html">Partners</a>
+    <a href="join.html">Get Involved</a>
+  </div>
+  <div class="footer-bottom">© 2026 Kintsugi Art Youth Collective. Started June 2026 — mended with gold ever since.</div>
+</footer>
+<script>
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal, .divider').forEach(el => io.observe(el));
+
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('nav.links');
+  if(toggle && links){
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  }
+
+</script>
 </body>
 </html>
