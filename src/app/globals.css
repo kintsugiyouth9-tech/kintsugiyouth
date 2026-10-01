@@ -14,25 +14,9 @@
   --color-gold-bright: #E0B84B;
   --color-ink: #4A362F;
   --color-ink-soft: #7A6155;
-
-  --shadow-default: 0 20px 50px -20px rgba(150, 100, 60, 0.35);
 }
 
 @layer base {
-  html {
-    /* Remove scroll-behavior: smooth - Lenis handles this */
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-
   body {
     background:
       radial-gradient(ellipse 900px 500px at 85% -5%, rgba(246, 211, 221, 0.55), transparent 60%),
@@ -52,21 +36,11 @@
     flex: 1;
   }
 
-  h1, h2, h3, .display {
+  h1, h2, h3 {
     font-family: var(--font-shippori);
     color: var(--color-ink);
     font-weight: 700;
     letter-spacing: 0.01em;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  img, svg {
-    display: block;
-    max-width: 100%;
   }
 
   * {
@@ -78,165 +52,5 @@
   :focus-visible {
     outline: 2px solid var(--color-gold);
     outline-offset: 3px;
-  }
-
-  /* Lenis smooth scroll - prevent conflicts */
-  .lenis {
-    height: auto;
-  }
-
-  .lenis.lenis-smooth {
-    scroll-behavior: auto;
-  }
-
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-  }
-}
-
-@layer utilities {
-  .container-custom {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  .text-gold-gradient {
-    background: linear-gradient(100deg, var(--color-gold), var(--color-peach-deep) 60%, var(--color-gold-bright));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--color-gold-bright), var(--color-gold));
-    color: #fff;
-    padding: 15px 30px;
-    border-radius: 9999px;
-    font-weight: 500;
-    box-shadow: 0 12px 26px -10px rgba(198, 151, 47, 0.65);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 32px -10px rgba(198, 151, 47, 0.8);
-  }
-
-  .btn-ghost {
-    padding: 15px 28px;
-    border-radius: 9999px;
-    border: 1.5px solid rgba(74, 54, 47, 0.25);
-    color: var(--color-ink);
-    font-weight: 500;
-    transition: border-color 0.25s ease, background 0.25s ease;
-    display: inline-block;
-    background: transparent;
-  }
-
-  .btn-ghost:hover {
-    border-color: var(--color-gold);
-    background: rgba(198, 151, 47, 0.08);
-  }
-
-  .kicker {
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-gold);
-    font-weight: 700;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .section-head {
-    max-width: 640px;
-    margin-bottom: 56px;
-  }
-
-  .section-head.center {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-
-  .section-head h2 {
-    font-size: clamp(1.9rem, 3vw, 2.5rem);
-    margin-bottom: 16px;
-  }
-
-  .section-head p {
-    color: var(--color-ink-soft);
-    font-size: 1.05rem;
-  }
-
-  .divider {
-    width: 100%;
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  .divider svg {
-    width: 100%;
-    height: 34px;
-  }
-
-  .divider path {
-    fill: none;
-    stroke: var(--color-gold);
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-dasharray: 900;
-    stroke-dashoffset: 900;
-    transition: stroke-dashoffset 1.4s cubic-bezier(0.65, 0, 0.35, 1);
-  }
-
-  .page-hero {
-    padding: 64px 32px 20px;
-    max-width: 1180px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .page-hero .kicker {
-    display: block;
-    margin-bottom: 14px;
-  }
-
-  .page-hero h1 {
-    font-size: clamp(2.2rem, 4vw, 3.1rem);
-    margin-bottom: 16px;
-  }
-
-  .page-hero p {
-    color: var(--color-ink-soft);
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 1.05rem;
-  }
-}
-
-/* Framer Motion animation utilities */
-@layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.6s ease-out forwards;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
   }
 }

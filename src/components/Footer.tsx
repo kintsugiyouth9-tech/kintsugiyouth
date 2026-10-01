@@ -13,15 +13,9 @@ export function Footer() {
 
   return (
     <footer className="pt-20 pb-10 text-center border-t border-gold/10">
-      <div className="container-custom">
+      <div className="max-w-[1180px] mx-auto px-8">
         <Link href="/" className="flex items-center justify-center gap-3 font-shippori text-xl font-bold mb-6">
-          <Image
-            src="/logo.jpg"
-            alt=""
-            width={32}
-            height={32}
-            className="w-8 h-8 rounded-lg object-cover"
-          />
+          <Image src="/logo.jpg" alt="" width={32} height={32} className="w-8 h-8 rounded-lg object-cover" />
           <span>Kintsugi Youth</span>
         </Link>
 
@@ -29,7 +23,7 @@ export function Footer() {
           A youth organisation joining communities together, one gold seam at a time.
         </p>
 
-        <nav className="flex flex-wrap justify-center gap-6 mb-8" aria-label="Footer navigation">
+        <nav className="flex flex-wrap justify-center gap-6 mb-8">
           {footerLinks.map((link) => (
             <Link
               key={link.href}

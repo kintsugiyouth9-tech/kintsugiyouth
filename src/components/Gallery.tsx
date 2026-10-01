@@ -16,16 +16,16 @@ const images = [
 export function Gallery() {
   return (
     <section className="py-20" style={{ background: "linear-gradient(180deg, transparent, rgba(245,199,156,0.15) 50%, transparent)" }}>
-      <div className="container-custom">
+      <div className="max-w-[1180px] mx-auto px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4">
           {images.map((img, index) => (
             <motion.div
               key={img.src}
-              className="group aspect-[4/3] rounded-xl overflow-hidden bg-white shadow-[0_8px_24px_-12px_rgba(150,100,60,0.3)] border border-gold/10 transition-all duration-300"
-              whileHover={{ y: -8, boxShadow: "0 16px 36px -16px rgba(150,100,60,0.4)" }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className="group aspect-[4/3] rounded-xl overflow-hidden bg-white border border-gold/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_36px_-16px_rgba(150,100,60,0.4)]"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
             >
               <Image
                 src={img.src}

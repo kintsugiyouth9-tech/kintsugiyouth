@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const principles = [
   {
     title: "Visibility over charity",
-    description: "We don&apos;t hide where help is needed or where it comes from. Every drive is transparent — who gave, what was collected, where it went.",
+    description: "We don't hide where help is needed or where it comes from. Every drive is transparent — who gave, what was collected, where it went.",
   },
   {
     title: "Repair, not rescue",
@@ -13,23 +14,23 @@ const principles = [
   },
   {
     title: "The seam is the point",
-    description: "We don&apos;t just want the gap gone — we want the joining itself, youth and community together, to be worth noticing.",
+    description: "We don't just want the gap gone — we want the joining itself, youth and community together, to be worth noticing.",
   },
 ];
 
 export function PhilosophySection() {
   return (
-    <section className="py-20 md:py-28 relative" style={{ background: "linear-gradient(180deg, transparent, rgba(246,211,221,0.35) 40%, rgba(246,211,221,0.35) 60%, transparent)" }}>
-      <div className="container-custom">
+    <section className="py-20 md:py-28" style={{ background: "linear-gradient(180deg, transparent, rgba(246,211,221,0.35) 40%, rgba(246,211,221,0.35) 60%, transparent)" }}>
+      <div className="max-w-[1180px] mx-auto px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
           <motion.div
+            className="relative max-w-[380px] mx-auto"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative max-w-[380px] mx-auto"
           >
-            <div className="aspect-square rounded-full bg-gradient-radial from-white via-pink to-pink/50 flex items-center justify-center shadow-default relative">
+            <div className="aspect-square rounded-full flex items-center justify-center" style={{ background: "radial-gradient(circle at 35% 30%, #fff, var(--pink) 70%)", boxShadow: "var(--shadow-default)" }}>
               <svg viewBox="0 0 200 200" fill="none" className="w-[62%]">
                 <circle cx="100" cy="100" r="86" fill="#FBEADD" stroke="#EFAE79" strokeWidth="2" />
                 <path d="M40 90 L85 120 L75 165" stroke="#C6972F" strokeWidth="5" strokeLinecap="round" />
@@ -45,7 +46,7 @@ export function PhilosophySection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="kicker">The Philosophy</span>
+            <span className="text-xs uppercase tracking-[0.14em] text-gold font-bold mb-4 block">The Philosophy</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6">
               Kintsugi — <span className="font-shippori text-2xl text-gold">金継ぎ</span>, &ldquo;golden joinery&rdquo;
             </h2>
@@ -58,35 +59,28 @@ export function PhilosophySection() {
             <p className="text-ink-soft text-lg mb-8">
               We borrow that idea for our work in communities. A school without books, a shelter without blankets, a family without a meal — these are fractures too. We don&apos;t believe in quietly patching them over. We believe in repairing them openly, together, in a way people can see and be part of.
             </p>
-            <a href="/philosophy" className="btn-ghost inline-flex">
+            <Link href="/philosophy" className="inline-flex px-7 py-4 rounded-full border-[1.5px] border-ink/25 text-ink font-medium hover:border-gold hover:bg-gold/5 transition-all">
               Read our full philosophy
-            </a>
+            </Link>
           </motion.div>
         </div>
 
-        <motion.div
-          className="grid md:grid-cols-3 gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="grid md:grid-cols-3 gap-6">
           {principles.map((principle, index) => (
             <motion.div
               key={principle.title}
-              className="drive-card relative overflow-hidden bg-white rounded-[26px] p-8 shadow-[0_14px_34px_-18px_rgba(150,100,60,0.3)] border border-gold/10 transition-all duration-350 group"
-              whileHover={{ y: -8, boxShadow: "0 22px 44px -18px rgba(150,100,60,0.4)" }}
+              className="relative bg-white rounded-[26px] p-8 border border-gold/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_22px_44px_-18px_rgba(150,100,60,0.4)]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <div className="crack-seam absolute bottom-0 left-0 right-0 h-[5px] bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-[5px] bg-gradient-to-r from-transparent via-gold to-transparent" />
               <h3 className="text-xl font-bold mb-3">{principle.title}</h3>
               <p className="text-ink-soft text-base leading-relaxed">{principle.description}</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         <motion.div
           className="text-center mt-12"
@@ -94,9 +88,9 @@ export function PhilosophySection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <a href="/philosophy" className="btn-ghost inline-flex">
+          <Link href="/philosophy" className="inline-flex px-7 py-4 rounded-full border-[1.5px] border-ink/25 text-ink font-medium hover:border-gold hover:bg-gold/5 transition-all">
             Read Full Philosophy
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
