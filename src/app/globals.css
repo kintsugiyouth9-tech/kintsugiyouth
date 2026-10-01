@@ -20,7 +20,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* Remove scroll-behavior: smooth - Lenis handles this */
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -30,7 +30,6 @@
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
     }
   }
 
@@ -79,6 +78,19 @@
   :focus-visible {
     outline: 2px solid var(--color-gold);
     outline-offset: 3px;
+  }
+
+  /* Lenis smooth scroll - prevent conflicts */
+  .lenis {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
   }
 }
 
@@ -183,21 +195,6 @@
     transition: stroke-dashoffset 1.4s cubic-bezier(0.65, 0, 0.35, 1);
   }
 
-  .divider.in-view path {
-    stroke-dashoffset: 0;
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(26px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-
-  .reveal.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   .page-hero {
     padding: 64px 32px 20px;
     max-width: 1180px;
@@ -221,16 +218,25 @@
     margin: 0 auto;
     font-size: 1.05rem;
   }
+}
 
-  @media (max-width: 980px) {
-    .nav { padding: 14px 20px; }
-    .hero { padding: 56px 20px 40px; }
-    section { padding: 64px 20px; }
+/* Framer Motion animation utilities */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
   }
 
-  @media (max-width: 560px) {
-    .nav { padding: 14px 20px; }
-    .hero { padding: 56px 20px 40px; }
-    section { padding: 64px 20px; }
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
