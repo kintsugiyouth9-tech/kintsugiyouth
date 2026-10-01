@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   const footerLinks = [
@@ -14,7 +15,13 @@ export function Footer() {
     <footer className="pt-20 pb-10 text-center border-t border-gold/10">
       <div className="container-custom">
         <Link href="/" className="flex items-center justify-center gap-3 font-shippori text-xl font-bold mb-6">
-          <img src="/logo.jpg" alt="" className="w-8 h-8 rounded-lg object-cover" />
+          <Image
+            src="/logo.jpg"
+            alt=""
+            width={32}
+            height={32}
+            className="w-8 h-8 rounded-lg object-cover"
+          />
           <span>Kintsugi Youth</span>
         </Link>
 

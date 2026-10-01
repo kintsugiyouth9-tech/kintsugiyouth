@@ -15,7 +15,16 @@ function readRegistrations() {
   }
 }
 
-function writeRegistrations(registrations: any[]) {
+interface Registration {
+  id: number;
+  name: string;
+  email: string;
+  city: string;
+  interest: string;
+  created_at: string;
+}
+
+function writeRegistrations(registrations: Registration[]) {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(registrations, null, 2));
   } catch (error) {
@@ -38,7 +47,7 @@ export async function POST(request: NextRequest) {
 
     const registrations = readRegistrations();
 
-    if (registrations.some((r: any) => r.email.toLowerCase() === email.toLowerCase())) {
+    if (registrations.some((r: Registration) => r.email.toLowerCase() === email.toLowerCase())) {
       return NextResponse.json({ error: "Email already registered" }, { status: 400 });
     }
 
