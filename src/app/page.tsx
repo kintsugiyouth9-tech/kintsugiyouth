@@ -4,8 +4,6 @@ import { Hero } from "@/components/Hero";
 import { DrivesSection } from "@/components/DrivesSection";
 import { ImpactSection } from "@/components/ImpactSection";
 import { PhilosophySection } from "@/components/PhilosophySection";
-import { Gallery } from "@/components/Gallery";
-import { ScrollPath } from "@/components/ScrollPath";
 import { CTASection } from "@/components/CTASection";
 import { Divider } from "@/components/Reveal";
 
@@ -21,10 +19,6 @@ export default function HomePage() {
         <DrivesSection />
         <Divider />
         <ImpactSection />
-        <Divider />
-        <ScrollPath />
-        <Divider />
-        <Gallery />
         <Divider />
         <CTASection />
       </main>
