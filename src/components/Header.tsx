@@ -44,12 +44,6 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/join"
-              className="bg-gradient-to-br from-gold-bright to-gold text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-            >
-              Contribute
-            </Link>
           </div>
 
           <div className="flex items-center gap-4">
